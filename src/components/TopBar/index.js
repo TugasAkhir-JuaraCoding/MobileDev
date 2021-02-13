@@ -1,7 +1,22 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert } from 'react-native'
 import { Modal, ModalContent } from 'react-native-modals';
-import { warnaUtama } from '../../utils/styles'
+import { warnaUtama } from '../../utils/styles';
+
+const createTwoButtonAlert = () =>
+    Alert.alert(
+        "Halo",
+        "\n Teguh muhammad \n anda login sebagai member\n",
+        [
+            {
+                text: "Logout",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+            },
+            { text: "Back", onPress: () => console.log("OK Pressed") }
+        ],
+        { cancelable: false }
+    );
 const TopBar = () => {
 
     const [visible, setVisible] = useState(false)
@@ -11,7 +26,7 @@ const TopBar = () => {
             <Text style={styles.title}>&lt;Magurodev /&gt;</Text>
 
             {/* //profile card */}
-            <TouchableOpacity style={styles.profile}>
+            <TouchableOpacity style={styles.profile} onPress={createTwoButtonAlert}>
                 <Image
                     style={styles.tinyLogo}
                     source={{
